@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>خطة دراسية ذكية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="smart-page bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="container bg-gray-800 p-8 rounded-2xl shadow-lg max-w-2xl w-full">
+    <h1 class="text-3xl font-bold text-center mb-4">📑 خطة دراسية ذكية</h1>
+    <p class="text-gray-300 mb-6 text-center">أدخل درجاتك وعدد المواد لتلقي اقتراح خطة مبدئية.</p>
+
+    <div class="space-y-4">
+      <input id="currentGpa" type="number" step="0.01" placeholder="المعدل الحالي" 
+             class="w-full p-3 rounded-lg text-gray-800" />
+      <input id="maxLoad" type="number" placeholder="أقصى عدد ساعات للترم" 
+             class="w-full p-3 rounded-lg text-gray-800" />
+      <button onclick="generatePlan()" 
+              class="w-full bg-purple-600 hover:bg-purple-500 p-3 rounded-lg font-bold">
+        اقتراح الخطة
+      </button>
+    </div>
+
+    <div id="planResult" class="mt-6 space-y-2 text-yellow-400 text-right"></div>
+  </div>
+
+  <script>
+    function generatePlan() {
+      const gpa = parseFloat(document.getElementById('currentGpa').value);
+      const max = parseInt(document.getElementById('maxLoad').value);
+      if (isNaN(gpa) || isNaN(max) || max <= 0) {
+        planResult.innerText = 'الرجاء إدخال بيانات صحيحة.';
+        return;
+      }
+      let suggestion = [];
+      if (gpa < 2) suggestion = ['مادة خفيفة (2-3 ساعات)', 'مراجعة مواد سابقة'];
+      else if (gpa < 3) suggestion = ['مادتين متوسطتين (3-4 ساعات)', 'مادة تدعيمية'];
+      else suggestion = ['ثلاث مواد متقدمة (4-5 ساعات)', 'مشروع تطبيقي'];
+      planResult.innerHTML = suggestion.map(s => `<p>– ${s}</p>`).join('');
+    }
+  </script>
+
+</body>
+</html>

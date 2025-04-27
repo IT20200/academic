@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>منبه المواعيد والاختبارات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4 reminder-page">
+
+  <div class="container bg-gray-800 p-8 rounded-2xl shadow-lg max-w-md w-full text-center">
+    <h1 class="text-3xl font-bold mb-4">⏰ منبه المواعيد والاختبارات</h1>
+    <p class="text-gray-300 mb-6">أضف موعدًا جديدًا وسيقوم المتصفح بتذكيرك عند اقتراب الوقت.</p>
+
+    <div class="space-y-4">
+      <input id="eventTitle" type="text" placeholder="عنوان الموعد" 
+             class="w-full p-3 rounded-lg text-gray-800" />
+      <input id="eventDate" type="datetime-local" 
+             class="w-full p-3 rounded-lg text-gray-800" />
+      <button onclick="setReminder()" 
+              class="w-full bg-green-600 hover:bg-green-500 p-3 rounded-lg font-bold">
+        ضبط التذكير
+      </button>
+    </div>
+
+    <div id="reminderResult" class="mt-6 text-yellow-400"></div>
+  </div>
+
+  <script>
+    function setReminder() {
+      const title = document.getElementById('eventTitle').value.trim();
+      const dateStr = document.getElementById('eventDate').value;
+      const dt = new Date(dateStr);
+      if (!title || !dateStr || dt <= new Date()) {
+        reminderResult.innerText = 'الرجاء إدخال عنوان وتاريخ مستقبلي صحيح.';
+        return;
+      }
+      reminderResult.innerText = `تم ضبط تذكير لـ "${title}" في ${dt.toLocaleString()}`;
+      // إنشاء التنبيه بعد المدة المتبقية
+      const delay = dt - new Date();
+      setTimeout(() => {
+        alert(`🔔 تذكير: ${title}`);
+      }, delay);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>موقع الطالب الذكي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="home-page bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-full max-w-5xl">
+    <h1 class="text-4xl font-bold text-center mb-4">🎓 موقع الطالب الذكي</h1>
+    <p class="text-center text-gray-300 mb-8">
+      أدوات متكاملة لحساب وتحليل أدائك الأكاديمي بسرعة وسهولة
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- الخدمات القديمة -->
+      <a href="gpa.html"
+         class="service-box">
+        🔢 حاسبة المعدل التراكمي
+      </a>
+      <a href="grade-converter.html"
+         class="service-box">
+        📊 تحويل الدرجة من 100 إلى تقدير
+      </a>
+      <a href="final-calc.html"
+         class="service-box">
+        ✅ حاسبة النجاح في الاختبار النهائي
+      </a>
+
+      <!-- الخدمات الجديدة -->
+      <a href="archive.html"
+         class="service-box">
+        📁 أرشفة الدرجات والخطط
+      </a>
+      <a href="smart-plan.html"
+         class="service-box">
+        📑 خطة دراسية ذكية
+      </a>
+      <a href="strengths.html"
+         class="service-box">
+        🧠 تحليل نقاط القوة الأكاديمية
+      </a>
+      <a href="graduation-sim.html"
+         class="service-box">
+        🎓 محاكاة التخرج واحتساب الساعات
+      </a>
+
+      <!-- الخدمتان الإضافيتان -->
+      <a href="attendance.html"
+         class="service-box">
+        📋 حاسبة نسبة الحضور
+      </a>
+      <a href="reminder.html"
+         class="service-box">
+        ⏰ منبه المواعيد والاختبارات
+      </a>
+
+    </div>
+  </div>
+
+  <style>
+    /* ننقل بعض تنسيقات .service-box هنا مؤقتاً */
+    .service-box {
+      background-color: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      text-decoration: none;
+      color: #ffe600;
+      font-size: 1.1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .service-box:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255,255,255,0.2);
+    }
+  </style>
+
+</body>
+</html>
