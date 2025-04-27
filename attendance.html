@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>حاسبة نسبة الحضور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4 attendance-page">
+
+  <div class="container bg-gray-800 p-8 rounded-2xl shadow-lg max-w-md w-full text-center">
+    <h1 class="text-3xl font-bold mb-4">📊 حاسبة نسبة الحضور</h1>
+    <p class="text-gray-300 mb-6">أدخل عدد الحصص الكليّة وعدد الغيابات لحساب نسبة حضورك.</p>
+
+    <div class="space-y-4">
+      <input id="totalClasses" type="number" placeholder="إجمالي عدد الحصص" 
+             class="w-full p-3 rounded-lg text-gray-800" />
+      <input id="absences" type="number" placeholder="عدد الغيابات" 
+             class="w-full p-3 rounded-lg text-gray-800" />
+      <button onclick="calcAttendance()" 
+              class="w-full bg-blue-600 hover:bg-blue-500 p-3 rounded-lg font-bold">
+        احسب النسبة
+      </button>
+    </div>
+
+    <div id="attendanceResult" class="mt-6 text-xl text-yellow-400"></div>
+  </div>
+
+  <script>
+    function calcAttendance() {
+      const total = parseInt(document.getElementById('totalClasses').value, 10);
+      const abs = parseInt(document.getElementById('absences').value, 10);
+      if (isNaN(total) || isNaN(abs) || total <= 0 || abs < 0 || abs > total) {
+        attendanceResult.innerText = 'الرجاء إدخال قيم صحيحة.';
+        return;
+      }
+      const percent = ((total - abs) / total * 100).toFixed(2);
+      attendanceResult.innerText = `نسبة الحضور: ${percent}%`;
+    }
+  </script>
+
+</body>
+</html>

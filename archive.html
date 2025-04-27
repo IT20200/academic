@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>أرشفة الدرجات والخطط</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="archive-page bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+  <div class="container bg-gray-800 p-8 rounded-2xl shadow-lg max-w-3xl w-full">
+    <h1 class="text-3xl font-bold text-center mb-4">📁 أرشفة الدرجات والخطط</h1>
+    <p class="text-gray-300 mb-6 text-center">حمّل سجل درجاتك وخططك الأكاديمية واحتفظ بها آمنًا على جهازك.</p>
+
+    <div class="flex flex-col items-center gap-4">
+      <input id="fileInput" type="file" accept=".json,.csv" 
+             class="p-2 bg-gray-700 rounded-lg text-gray-200 w-full max-w-md" />
+      <button onclick="archiveData()" 
+              class="bg-indigo-600 hover:bg-indigo-500 p-3 rounded-lg font-bold">
+        أرشف الآن
+      </button>
+    </div>
+
+    <div id="archiveResult" class="mt-6 text-yellow-400"></div>
+  </div>
+
+  <script>
+    function archiveData() {
+      const file = document.getElementById('fileInput').files[0];
+      if (!file) {
+        archiveResult.innerText = 'الرجاء اختيار ملف.';
+        return;
+      }
+      archiveResult.innerText = `تم أرشفة الملف: ${file.name}`;
+    }
+  </script>
+
+</body>
+</html>
